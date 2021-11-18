@@ -3,6 +3,7 @@ int screenH = 1080;
 PImage imgSketchMainScene1;
 
 Movement movement1 = new Movement();
+Dialogue dialogue1 = new Dialogue();
 
 final SceneManager sceneManager = new SceneManager();
 final InventoryManager inventoryManager = new InventoryManager();
@@ -11,7 +12,9 @@ void setup()
 {
   //framerate affects move speed
   frameRate(60);
+  background(0);
   fullScreen();
+  
   
    // adds a collectable objects giving it a name and an image 
    Collectable joint = new Collectable("joint","joint.png");
@@ -38,13 +41,23 @@ void setup()
 
 void draw()
 {
+  // if there is no blackscreen, aka the dialogue ends, then it switches to the getCurrentScene
+  if (dialogue1.blackScreenHere)
+  {
   background(0);
+ 
+  dialogue1.drawDialogue();
+  }
+  if (dialogue1.blackScreenHere == false)
+  {
   sceneManager.getCurrentScene().draw(screenW,screenH);
   sceneManager.getCurrentScene().updateScene();
   inventoryManager.clearMarkedForDeathCollectables();
-  movement1.getX();
-  movement1.moveMainPerson();
+  //movement1.getX();
+  //movement1.moveMainPerson();
   movement1.drawMainPerson ();
+  
+  }
 
 }
 
@@ -54,4 +67,5 @@ void mouseMoved() {
 
 void mouseClicked() {
   sceneManager.getCurrentScene().mouseClicked();
+  dialogue1.mouseClick();
 }
