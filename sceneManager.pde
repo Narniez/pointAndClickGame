@@ -1,6 +1,9 @@
 import java.util.Stack;
 import java.util.HashMap;
 
+//Stacks the scene and keeps track of them
+//Gives you the current scene 
+
 class SceneManager {
   private HashMap<String, Scene> scenes;
   private Stack<Scene> scenesStack;
