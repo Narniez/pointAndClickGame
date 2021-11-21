@@ -55,7 +55,7 @@ void draw()
   inventoryManager.clearMarkedForDeathCollectables();
   //movement1.getX();
   //movement1.moveMainPerson();
-  movement1.drawMainPerson ();
+  //movement1.drawMainPerson ();
   
   }
 
